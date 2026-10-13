@@ -5,8 +5,12 @@
     "assets/logo-icon.svg",
     "assets/logo-mark.svg",
     "assets/logo-white.svg",
-    "index.html"
+    "assets/site.css",
+    "changelog.html",
+    "docs.html",
+    "index.html",
+    "privacy.html"
   ],
   "tool": "github-pages-publish",
-  "published_at": "2026-10-13T13:37:43+00:00"
+  "published_at": "2026-10-13T14:42:25+00:00"
 }

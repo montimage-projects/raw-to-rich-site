@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>r2r privacy policy</title>
+<meta name="description" content="How the r2r website and CLI tool handle data: no cookies or analytics on the site, no telemetry in the tool.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="r2r home">
+      <img src="assets/logo-mark.svg" alt="">
+      <span>RawToRich</span>
+    </a>
+    <div class="links">
+      <a href="docs.html">Docs</a><a href="changelog.html">Changelog</a>
+      <a class="btn btn-ghost btn-sm" href="index.html#quickstart">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="doc-hero">
+  <div class="wrap">
+    <h1>Privacy</h1>
+    <p>What data this website and the r2r tool handle, and where it goes.</p>
+    <div class="meta">Last updated <time datetime="2026-10-13">13 October 2026</time></div>
+  </div>
+</header>
+<div class="wrap doc">
+  <aside class="toc" aria-label="On this page"><b>On this page</b><ol><li><a href="#summary">Summary</a></li><li><a href="#controller">Who we are</a></li><li><a href="#website">This website</a></li><li><a href="#tool">The r2r tool</a></li><li><a href="#email">If you contact us</a></li><li><a href="#rights">Your rights</a></li><li><a href="#changes">Changes to this policy</a></li></ol></aside>
+  <article class="prose">
+<h2 id="summary">Summary</h2><div class="note"><p><strong>The website</strong> sets no cookies, runs no analytics and has no forms. <strong>The r2r tool</strong> runs on your machine and sends nothing to Montimage. Your data goes only to the LLM provider you configure, plus LangSmith if you turn tracing on.</p></div>
+<h2 id="controller">Who we are</h2><p>This website and the r2r tool are published by Montimage. For any privacy question or request, write to <a href="mailto:contact@montimage.eu">contact@montimage.eu</a>.</p>
+<h2 id="website">This website</h2><p>This site is a set of static pages. It has no accounts, forms, cookies, analytics or advertising, and it stores nothing in your browser.</p>
+<h3>Hosting</h3>
+<p>The site is hosted on GitHub Pages. When you load a page, GitHub receives standard request data, such as your IP address, browser and the page requested, and may log it for security and operations. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub General Privacy Statement</a>.</p>
+<h3>Fonts</h3>
+<p>Pages load the Inter and JetBrains Mono fonts from Google Fonts. Your browser therefore requests them from Google's servers, which receive your IP address and browser details. See the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>. Block those requests and the pages still work, using your system fonts.</p>
+<h2 id="tool">The r2r tool</h2><p>r2r is software you install and run yourself. It contains no telemetry, usage reporting or update checks, and it sends nothing to Montimage.</p>
+<h3>LLM providers you choose</h3>
+<p>To generate a dataset, r2r renders a prompt from each row of your input and sends it to the provider in your configuration:</p>
+<ul>
+<li><strong>Ollama</strong> runs on your own hardware, so prompts and responses stay on your machine or network.</li>
+<li><strong>Cloud providers</strong> (OpenAI, Anthropic, Google Gemini, Mistral, OpenRouter, Perplexity) receive each prompt under your own API key. How they process it is governed by your agreement with that provider.</li>
+</ul>
+<p>Don't send personal or confidential data to a cloud provider unless your agreement with it allows that.</p>
+<h3>API keys</h3>
+<p>r2r reads API keys only from environment variables. A key written into a YAML config file is ignored. Keys are passed to the matching provider and nowhere else.</p>
+<h3>Optional LangSmith tracing</h3>
+<p>Tracing is off by default. If you enable it and provide a LangSmith key, r2r sends run traces, including prompts and responses, to the LangSmith endpoint in your configuration, under your LangSmith account.</p>
+<h3>Your files</h3>
+<p>Input data, generated datasets and reports are read from and written to paths you choose on your machine.</p>
+<h2 id="email">If you contact us</h2><p>If you email Montimage, we use your address and message to reply, and keep the correspondence only as long as needed to handle your request.</p>
+<h2 id="rights">Your rights</h2><p>If you are in the European Union or the European Economic Area, the GDPR gives you the right to access, correct or delete personal data we hold about you, to object to or restrict its processing, and to complain to your data protection authority. To exercise these rights, write to <a href="mailto:contact@montimage.eu">contact@montimage.eu</a>.</p>
+<h2 id="changes">Changes to this policy</h2><p>We update this page when the website or the tool changes how data is handled. The date at the top shows the latest revision. Earlier versions are in the site's public repository history.</p>
+  </article>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-white.svg" alt="r2r — Raw to Rich">
+    <nav aria-label="Footer"><a href="docs.html">Docs</a><a href="changelog.html">Changelog</a><a href="privacy.html" aria-current="page">Privacy</a><a href="https://montimage.eu">Montimage</a></nav>
+    <span>Apache-2.0 · © 2026 Montimage</span>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && map[e.target.id]) {
+        links.forEach(function (l) { l.classList.remove('on'); });
+        map[e.target.id].classList.add('on');
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px' });
+  Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) obs.observe(el); });
+})();
+</script>
+</body>
+</html>

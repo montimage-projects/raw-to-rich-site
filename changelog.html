@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>r2r changelog</title>
+<meta name="description" content="Release history for r2r (RawToRich): new features, changes and fixes in every version.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="r2r home">
+      <img src="assets/logo-mark.svg" alt="">
+      <span>RawToRich</span>
+    </a>
+    <div class="links">
+      <a href="docs.html">Docs</a><a href="changelog.html" aria-current="page">Changelog</a>
+      <a class="btn btn-ghost btn-sm" href="index.html#quickstart">Get started</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="doc-hero">
+  <div class="wrap">
+    <h1>Changelog</h1>
+    <p>What changed in each r2r release. The format follows Keep a Changelog, and versions follow Semantic Versioning.</p>
+    <div class="meta">Generated from CHANGELOG.md · 11 releases</div>
+  </div>
+</header>
+<div class="wrap doc">
+  <aside class="toc" aria-label="On this page"><b>On this page</b><ol><li><a href="#v1-1-0">1.1.0 · 2026-01-17</a></li><li><a href="#v1-0-0">1.0.0 · 2026-01-16</a></li><li><a href="#v0-9-0">0.9.0 · 2025-10-14</a></li><li><a href="#v0-8-0">0.8.0 · 2025-09-02</a></li><li><a href="#v0-7-0">0.7.0 · 2025-09-02</a></li><li><a href="#v0-6-0">0.6.0 · 2025-08-15</a></li><li><a href="#v0-5-0">0.5.0 · 2025-07-10</a></li><li><a href="#v0-4-0">0.4.0 · 2025-06-15</a></li><li><a href="#v0-3-0">0.3.0 · 2025-05-20</a></li><li><a href="#v0-2-0">0.2.0 · 2025-04-10</a></li><li><a href="#v0-1-0">0.1.0 · 2025-03-01</a></li></ol></aside>
+  <article class="prose">
+<h2 id="v1-1-0" class="ver">1.1.0 <time datetime="2026-01-17">2026-01-17</time> <span class="tag">Latest</span></h2><h3>Changed</h3>
+<h4>Breaking Changes</h4>
+<ul>
+<li><strong>Package renamed</strong>: <code>instruction-data-generator</code> → <code>r2r</code></li>
+<li><strong>Product rebrand</strong>: Now known as "RawToRich"</li>
+<li><strong>CLI command</strong>: New <code>r2r</code> command (e.g., <code>r2r process data.csv</code>)<ul>
+<li>Backward compatible: <code>python -m src</code> still works</li>
+</ul>
+</li>
+<li><strong>LangSmith project</strong>: <code>instruction-data-generator</code> → <code>rawtorrich</code></li>
+</ul>
+<h4>Migration Guide</h4>
+<p>If you previously installed:</p>
+<pre><code class="language-bash">pip uninstall instruction-data-generator
+pip install r2r
+</code></pre>
+<p>Update your scripts:</p>
+<pre><code class="language-bash"># OLD
+python -m src.cli generate --input data.csv --output out.jsonl
+
+# NEW (preferred)
+r2r process data.csv --output out.jsonl
+
+# STILL WORKS (backward compatible)
+python -m src process data.csv --output out.jsonl
+</code></pre>
+<p>Update environment variables:</p>
+<pre><code class="language-bash"># OLD
+LANGSMITH_PROJECT=instruction-data-generator
+
+# NEW
+LANGSMITH_PROJECT=rawtorrich
+</code></pre>
+<h3>Documentation</h3>
+<ul>
+<li>Updated all documentation to reflect RawToRich branding</li>
+<li>Updated CLI examples to use <code>r2r</code> command as primary</li>
+<li>Maintained GitHub repository URL for backward compatibility</li>
+<li>Added migration guide for upgrading from v1.0.0</li>
+</ul>
+<h2 id="v1-0-0" class="ver">1.0.0 <time datetime="2026-01-16">2026-01-16</time></h2><h3>Added</h3>
+<h4>Documentation</h4>
+<ul>
+<li><strong>Development Guide</strong> (<code>docs/development.md</code>): Complete local setup, testing, and debugging instructions for developers</li>
+<li><strong>Deployment Guide</strong> (<code>docs/deployment.md</code>): Production deployment options including CLI, Docker, batch services, and API</li>
+<li>Comprehensive documentation structure with role-based navigation (End Users, Developers, Operations)</li>
+<li>Documentation map with visual Mermaid diagrams for easy navigation</li>
+<li>"Quick links by task" section in docs/README.md for common use cases</li>
+</ul>
+<h4>Infrastructure &amp; Quality</h4>
+<ul>
+<li><strong>CI/CD Pipeline Improvements</strong>:<ul>
+<li>Pre-commit hooks with latest versions (black 24.10.0, ruff 0.8.4, mypy 1.14.1)</li>
+<li>File validation (check-ast, debug-statements)</li>
+<li>pip-audit for dependency vulnerability scanning</li>
+<li>GitHub Actions caching for pip dependencies</li>
+<li>Gradual typing with mypy configuration</li>
+</ul>
+</li>
+</ul>
+<h4>Features</h4>
+<ul>
+<li>
+<p><strong>LLM Response Enhancement</strong>:</p>
+<ul>
+<li>Metrics and reasoning capture in LLM responses</li>
+<li>Enhanced batch processing with response metrics</li>
+<li>Improved data loading with response validation</li>
+</ul>
+</li>
+<li>
+<p><strong>Template Additions</strong>:</p>
+<ul>
+<li>New SMS analysis template (<code>sms_analyzing.j2</code>)</li>
+<li>New URL analysis template (<code>url_analyzing.j2</code>)</li>
+<li>Enhanced email analysis template with structured JSON format</li>
+</ul>
+</li>
+<li>
+<p><strong>Provider Support</strong>:</p>
+<ul>
+<li>OpenRouter LLM provider integration</li>
+<li>Perplexity models support</li>
+<li>Character limit filtering for responses</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Processing</strong>:</p>
+<ul>
+<li>Data preprocessing module for dataset validation and cleaning</li>
+<li>Dataset balancing functionality</li>
+<li>Data balancing utilities with sample selection</li>
+</ul>
+</li>
+</ul>
+<h3>Changed</h3>
+<h4>Breaking Changes</h4>
+<ul>
+<li><strong>None</strong> - Version 1.0.0 maintains backward compatibility with existing APIs</li>
+</ul>
+<h4>Improvements</h4>
+<ul>
+<li>
+<p><strong>Streamlined Root README</strong>:</p>
+<ul>
+<li>Reduced to entry point with clear "What is it?" section</li>
+<li>Role-based documentation navigation</li>
+<li>Concise quick start (3 lines vs extended examples)</li>
+<li>Cross-references to specialized guides</li>
+</ul>
+</li>
+<li>
+<p><strong>Code Quality</strong>:</p>
+<ul>
+<li>Fixed mypy type errors in <code>prompt_template.py</code></li>
+<li>Improved error handling in LLM integration</li>
+<li>Enhanced batch processor concurrent handling</li>
+</ul>
+</li>
+<li>
+<p><strong>Test Suite</strong>:</p>
+<ul>
+<li>Rewrote comprehensive config tests to match actual API</li>
+<li>Rewrote extended data loader tests</li>
+<li>Fixed output formatter tests</li>
+<li>All 162 tests passing</li>
+<li>Improved test coverage for LLM integration, CLI, and templates</li>
+</ul>
+</li>
+<li>
+<p><strong>Configuration</strong>:</p>
+<ul>
+<li>Updated Gemini model from 2.5-flash to optimized version</li>
+<li>Mistral model updated to medium-2508</li>
+<li>Updated model names in configuration files</li>
+<li>Ollama configuration improvements</li>
+</ul>
+</li>
+</ul>
+<h3>Fixed</h3>
+<h4>CI/CD &amp; Infrastructure</h4>
+<ul>
+<li>Fixed GitHub Actions workflow with proper virtual environment handling</li>
+<li>Resolved invalid hashFiles function in CI workflow</li>
+<li>Fixed lint commands to only check src/ directory</li>
+<li>Removed references to requirements-dev.txt</li>
+<li>Fixed pre-commit hook execution</li>
+<li>Resolved type checking issues in CI pipeline</li>
+</ul>
+<h4>Code</h4>
+<ul>
+<li>Fixed trailing whitespace throughout codebase</li>
+<li>Resolved import errors and module organization issues</li>
+<li>Fixed Gemini model compatibility issues</li>
+<li>Resolved data loader edge cases for different formats</li>
+</ul>
+<h3>Removed</h3>
+<h4>Deprecated</h4>
+<ul>
+<li>requirements-dev.txt (use requirements.txt)</li>
+<li>Legacy test files with incorrect APIs</li>
+</ul>
+<h3>Security</h3>
+<ul>
+<li>Added pip-audit for vulnerability scanning</li>
+<li>Pre-commit hooks for AST validation</li>
+<li>Debug statement detection</li>
+</ul>
+<h3>Performance</h3>
+<ul>
+<li>Optimized batch processing with concurrent workers</li>
+<li>Improved data loading with streaming for large files</li>
+<li>Enhanced LLM response caching and retry logic</li>
+<li>Batch size configuration for memory optimization</li>
+</ul>
+<h2 id="v0-9-0" class="ver">0.9.0 <time datetime="2025-10-14">2025-10-14</time></h2><h3>Added</h3>
+<h4>Features</h4>
+<ul>
+<li>Enhanced LLM response handling with metrics and reasoning capture</li>
+<li>New templates: SMS analyzing, URL analyzing</li>
+<li>Improved batch processor with concurrent request handling</li>
+<li>Data quality metrics in output</li>
+</ul>
+<h4>Documentation</h4>
+<ul>
+<li>API documentation for core modules (config, data_loader, pipeline)</li>
+<li>Comprehensive README files for src/ and templates/ directories</li>
+<li>Architecture documentation with Mermaid diagrams</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Updated output formatter to include response metrics</li>
+<li>Enhanced data loader with additional format validation</li>
+<li>Improved LLM integration error handling and retries</li>
+</ul>
+<h2 id="v0-8-0" class="ver">0.8.0 <time datetime="2025-09-02">2025-09-02</time></h2><h3>Added</h3>
+<h4>Provider Support</h4>
+<ul>
+<li>OpenRouter LLM provider support</li>
+<li>Perplexity models integration</li>
+<li>Character limit filtering for responses</li>
+</ul>
+<h4>Data Processing</h4>
+<ul>
+<li>Data preprocessing module for validation and cleaning</li>
+<li>Dataset balancing utilities</li>
+<li>Character limit filtering configuration</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Enhanced CLI with preprocessing options</li>
+<li>Improved model configuration management</li>
+</ul>
+<h2 id="v0-7-0" class="ver">0.7.0 <time datetime="2025-09-02">2025-09-02</time></h2><h3>Added</h3>
+<ul>
+<li>Jinja2 template support with manual rendering</li>
+<li>Extended template configuration options</li>
+<li>Email analysis template with structured JSON format</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Template system refactored for better flexibility</li>
+<li>Updated Mistral model to medium-2508</li>
+<li>Improved template validation</li>
+</ul>
+<h2 id="v0-6-0" class="ver">0.6.0 <time datetime="2025-08-15">2025-08-15</time></h2><h3>Added</h3>
+<ul>
+<li>Gemini and Mistral LLM providers</li>
+<li>Comprehensive test scripts for provider integration</li>
+<li>Provider configuration files (YAML)</li>
+<li>File append mode for output</li>
+<li>Sample data in multiple formats (CSV, JSON, JSONL, Parquet)</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>CLI restructured for provider selection</li>
+<li>Configuration system enhanced for multi-provider support</li>
+</ul>
+<h3>Fixed</h3>
+<ul>
+<li>Model compatibility issues</li>
+<li>Provider-specific parameter handling</li>
+</ul>
+<h2 id="v0-5-0" class="ver">0.5.0 <time datetime="2025-07-10">2025-07-10</time></h2><h3>Added</h3>
+<ul>
+<li>Extended test coverage for LLM integration, CLI, and prompt templates</li>
+<li>Sample datasets and example code</li>
+<li>Email analysis template with structured output</li>
+<li>Start index option for batch processing</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>Refined template handling for better extensibility</li>
+<li>Improved error messaging and logging</li>
+</ul>
+<h2 id="v0-4-0" class="ver">0.4.0 <time datetime="2025-06-15">2025-06-15</time></h2><h3>Added</h3>
+<ul>
+<li>Core data preprocessing capabilities</li>
+<li>YAML template support</li>
+<li>Jinja2 templating engine integration with LangChain</li>
+<li>Initial Ollama provider support</li>
+</ul>
+<h3>Changed</h3>
+<ul>
+<li>CLI command structure unified</li>
+<li>Configuration loading improved</li>
+</ul>
+<h2 id="v0-3-0" class="ver">0.3.0 <time datetime="2025-05-20">2025-05-20</time></h2><h3>Added</h3>
+<ul>
+<li>Basic LLM integration framework</li>
+<li>Multi-format data loader (CSV, JSON, JSONL, Parquet)</li>
+<li>JSONL output formatting for Unsloth compatibility</li>
+<li>Quality filtering system</li>
+<li>Batch processing capabilities</li>
+</ul>
+<h2 id="v0-2-0" class="ver">0.2.0 <time datetime="2025-04-10">2025-04-10</time></h2><h3>Added</h3>
+<ul>
+<li>Core pipeline orchestration</li>
+<li>Template management system</li>
+<li>Configuration management</li>
+<li>Basic CLI structure</li>
+</ul>
+<h2 id="v0-1-0" class="ver">0.1.0 <time datetime="2025-03-01">2025-03-01</time></h2><h3>Added</h3>
+<ul>
+<li>Project initialization</li>
+<li>Core module structure</li>
+<li>Basic templates for code explanation, creative writing, and data analysis</li>
+<li>README documentation</li>
+</ul>
+  </article>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-white.svg" alt="r2r — Raw to Rich">
+    <nav aria-label="Footer"><a href="docs.html">Docs</a><a href="changelog.html" aria-current="page">Changelog</a><a href="privacy.html">Privacy</a><a href="https://montimage.eu">Montimage</a></nav>
+    <span>Apache-2.0 · © 2026 Montimage</span>
+  </div>
+</footer>
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting && map[e.target.id]) {
+        links.forEach(function (l) { l.classList.remove('on'); });
+        map[e.target.id].classList.add('on');
+      }
+    });
+  }, { rootMargin: '-80px 0px -70% 0px' });
+  Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) obs.observe(el); });
+})();
+</script>
+</body>
+</html>
