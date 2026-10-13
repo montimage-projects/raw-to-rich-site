@@ -1,0 +1,12 @@
+{
+  "site_dir": ".",
+  "files": [
+    "assets/favicon.svg",
+    "assets/logo-icon.svg",
+    "assets/logo-mark.svg",
+    "assets/logo-white.svg",
+    "index.html"
+  ],
+  "tool": "github-pages-publish",
+  "published_at": "2026-10-13T13:37:43+00:00"
+}
